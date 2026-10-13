@@ -16,36 +16,59 @@ def background_flag(width_back):
             print(f"{CSI}48;5;{29}m{'    ' * width_back}{RESET}", flush=True)
             time.sleep(0.1)
 
-def round(diameter, width_back):
+def circle(diameter, width_back):
     print(f"{CSI}H")
     center = width_back // 2
     offset = center - diameter // 2
+    diam_changing = diameter - 2 * cnt
+    red_color = f"{CSI}48;5;{124}m"
+    green_color = f"{CSI}48;5;{29}m"
     cnt = 10
     print(f"{CSI}1B")
     for i in range(10):
         if i < 4:
             cnt -= 2        
-            print(f"{CSI}1B{CSI}48;5;{29}m{' ' * (offset + cnt)}{CSI}48;5;{124}m{' ' * (diameter - 2 * cnt)}{ZERO}", end='',flush=True)
+            print(f"{CSI}1B{green_color}\
+                    {' ' * (offset + cnt)}\
+                    {red_color}\
+                    {' ' * (diam_changing)}\
+                    {ZERO}", end='',flush=True)
             time.sleep(0.1)
         elif i < 5:
             cnt -= 1        
-            print(f"{CSI}1B{CSI}48;5;{29}m{' ' * (offset + cnt)}{CSI}48;5;{124}m{' ' * (diameter - 2 * cnt)}{ZERO}", end='', flush=True)
+            print(f"{CSI}1B{green_color}\
+                    {' ' * (offset + cnt)}\
+                    {red_color}\
+                    {' ' * (diam_changing)}\
+                    {ZERO}", end='', flush=True)
             time.sleep(0.1)
         elif i == 5:
-            print(f"{CSI}1B{CSI}48;5;{29}m{' ' * (offset + cnt)}{CSI}48;5;{124}m{' ' * (diameter - 2 * cnt)}{ZERO}", end='', flush=True)
+            print(f"{CSI}1B{green_color}\
+                    {' ' * (offset + cnt)}\
+                    {red_color}\
+                    {' ' * (diam_changing)}\
+                    {ZERO}", end='', flush=True)
             time.sleep(0.1)
         elif i < 7:
             cnt += 1        
-            print(f"{CSI}1B{CSI}48;5;{29}m{' ' * (offset + cnt)}{CSI}48;5;{124}m{' ' * (diameter - 2 * cnt)}{ZERO}", end='', flush=True)
+            print(f"{CSI}1B{green_color}\
+                    {' ' * (offset + cnt)}\
+                    {red_color}\
+                    {' ' * (diam_changing)}\
+                    {ZERO}", end='', flush=True)
             time.sleep(0.1)
         else:
             cnt += 2        
-            print(f"{CSI}1B{CSI}48;5;{29}m{' ' * (offset + cnt)}{CSI}48;5;{124}m{' ' * (diameter - 2 * cnt)}{ZERO}", end='', flush=True)
+            print(f"{CSI}1B{green_color}\
+                    {' ' * (offset + cnt)}\
+                    {red_color}\
+                    {' ' * (diam_changing)}\
+                    {ZERO}", end='', flush=True)
             time.sleep(0.1)
 
 
 background_flag(16)
-round(28, 64)
+circle(28, 64)
 print(f"{RESET}{ZERO}{CSI}7B")
 time.sleep(3)
 
@@ -55,7 +78,7 @@ print(f"{RESET}{ZERO}{CSI}7B")
 
 time.sleep(3)
 
-def uzor():
+def pattern():
     backgrnd = f"{CSI}48;5;{45}m " 
     print(f"{ZERO}")
     print(f"{CSI}7B")
@@ -81,7 +104,7 @@ def uzor():
             print(f"{backgrnd}", end='',flush=True)
             time.sleep(0.1)
 
-uzor()
+pattern()
 
 print(f"{RESET}{ZERO}{CSI}7B")
 time.sleep(3)
